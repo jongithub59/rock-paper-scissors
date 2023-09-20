@@ -18,10 +18,8 @@ function getComputerChoice() { // randomly generates a numeber 1-3 and uses a sw
 }
 
 // Take the player's selection and adds a point for the winner of the round
-function playRound() {
+function playRound(playerChoice) {
 	const computerChoice = getComputerChoice();
-	let playerChoice = prompt('Choose rock, paper, or scissors.');
-	playerChoice = playerChoice.toLowerCase();
 
 	if (playerChoice == computerChoice) {
 		return('Tie!');
@@ -30,7 +28,6 @@ function playRound() {
 		computerWins = computerWins + 1;
 		return('Computer chose Paper! You Lose! Paper beats Rock!');
 		
-
 	} else if (playerChoice == 'rock' && computerChoice == 'scissors') {
 		playerWins = playerWins + 1;
 		return('Computer chose Scissors! You Win! Rock beats Scissors!');
@@ -55,20 +52,37 @@ function playRound() {
 
 }
 //  Plays rock paper scissors for 5 rounds and displays the winner
-function game() {
-	while (playerWins < 5 && computerWins < 5) {
-		console.log(playRound()); 
-		console.log('Rounds won: ' + playerWins + ' Computer rounds won: ' + computerWins);
-	}
-	if (playerWins = 5) {
-		return('You won the game!')
-	} else {
-		return('You lost the game.')
-	}
-}
+// function game() {
+	// while (playerWins < 5 && computerWins < 5) {
+// 		console.log(playRound()); 
+// 		console.log('Rounds won: ' + playerWins + ' Computer rounds won: ' + computerWins);
+// 	}
+// 	if (playerWins = 5) {
+// 		return('You won the game!')
+// 	} else {
+// 		return('You lost the game.')
+// 	}
+// }
 
 // main
 let playerWins = 0;
 let computerWins = 0;
-console.log(game());
+
+const rockButton = document.querySelector('#rockButton');
+rockButton.addEventListener('click', () => {
+	let playerChoice = 'rock';
+	console.log(playRound(playerChoice));
+});
+
+const paperButton = document.querySelector('#paperButton');
+paperButton.addEventListener('click', () => {
+	let playerChoice = 'paper';
+	console.log(playRound(playerChoice));
+});
+
+const scissorsButton = document.querySelector('#scissorsButton');
+scissorsButton.addEventListener('click', () => {
+	let playerChoice = 'scissors';
+	console.log(playRound(playerChoice));
+});
 
