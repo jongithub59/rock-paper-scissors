@@ -68,21 +68,39 @@ function playRound(playerChoice) {
 let playerWins = 0;
 let computerWins = 0;
 
+const score = document.querySelector('#score');
+
+score.textContent = 'Current Score \nPlayer: ' + playerWins + ' Computer: ' + computerWins; 
+
+const results = document.querySelector('#results');
+
+
 const rockButton = document.querySelector('#rockButton');
 rockButton.addEventListener('click', () => {
 	let playerChoice = 'rock';
-	console.log(playRound(playerChoice));
+	const winner = playRound(playerChoice);
+	results.textContent = winner;
+	score.textContent = 'Current Score \nPlayer: ' + playerWins + ' Computer: ' + computerWins; 
+
 });
 
 const paperButton = document.querySelector('#paperButton');
 paperButton.addEventListener('click', () => {
 	let playerChoice = 'paper';
-	console.log(playRound(playerChoice));
+	const winner = playRound(playerChoice);
+	results.textContent = winner;
+	score.textContent = 'Current Score \nPlayer: ' + playerWins + ' Computer: ' + computerWins; 
+
 });
 
 const scissorsButton = document.querySelector('#scissorsButton');
 scissorsButton.addEventListener('click', () => {
 	let playerChoice = 'scissors';
-	console.log(playRound(playerChoice));
+	const winner = playRound(playerChoice);
+	results.textContent = winner;
+	score.textContent = 'Current Score \nPlayer: ' + playerWins + ' Computer: ' + computerWins; 
+
+	
 });
+
 

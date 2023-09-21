@@ -1,3 +1,27 @@
 body {
+    text-align: center;
+    justify-content: center;
 	background-color: #4775a6;
+
+}
+
+#score {
+    white-space: pre-wrap;
+}
+
+.btn {
+    text-align: center;
+    max-width: 30vw;
+    min-width: 15vw;
+    border: solid black 1px;
+    background-color: aqua;
+    cursor: pointer;
+}
+
+#buttons {
+    margin: auto;
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
 }
