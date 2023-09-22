@@ -22,33 +22,34 @@ function playRound(playerChoice) {
 	const computerChoice = getComputerChoice();
 
 	if (playerChoice == computerChoice) {
-		return('Tie!');
+		results.textContent = 'Tie!';
 
 	} else if(playerChoice == 'rock' && computerChoice == 'paper') {
 		computerWins = computerWins + 1;
-		return('Computer chose Paper! You Lose! Paper beats Rock!');
+		results.textContent = 'Computer chose Paper! You Lose! Paper beats Rock!';
 		
 	} else if (playerChoice == 'rock' && computerChoice == 'scissors') {
 		playerWins = playerWins + 1;
-		return('Computer chose Scissors! You Win! Rock beats Scissors!');
+		results.textContent = 'Computer chose Scissors! You Win! Rock beats Scissors!';
 
 	} else if (playerChoice == 'paper' && computerChoice == 'rock') {
 		playerWins = playerWins + 1;
-		return('Computer chose Rock! You Win! Paper beats Rock!');
+		results.textContent = 'Computer chose Rock! You Win! Paper beats Rock!';
 
 	} else if (playerChoice == 'paper' && computerChoice == 'scissors') {
 		computerWins = computerWins + 1;
-		return('Computer chose Scissors! You Lose! Scissors beats Paper!');
+		results.textContent = 'Computer chose Scissors! You Lose! Scissors beats Paper!';
 
 	} else if (playerChoice == 'scissors' && computerChoice == 'rock') {
 		computerWins = computerWins + 1;
-		return('Computer chose Rock! You Lose! Rock beats Scissors!');
+		results.textContent = 'Computer chose Rock! You Lose! Rock beats Scissors!';
 
 	} else if (playerChoice == 'scissors' && computerChoice == 'paper') {
 		playerWins = playerWins + 1;
-		return('Computer chose Paper! You Win! Scissors beats Paper!');
+		results.textContent = 'Computer chose Paper! You Win! Scissors beats Paper!';
 	} else 
-		return('Please enter either "Rock", "Paper", or" Scissors"');
+	results.textContent = 'Please enter either "Rock", "Paper", or" Scissors"';
+	
 
 }
 //  Plays rock paper scissors for 5 rounds and displays the winner
@@ -78,8 +79,7 @@ const results = document.querySelector('#results');
 const rockButton = document.querySelector('#rockButton');
 rockButton.addEventListener('click', () => {
 	let playerChoice = 'rock';
-	const winner = playRound(playerChoice);
-	results.textContent = winner;
+	playRound(playerChoice);
 	score.textContent = 'Current Score \nPlayer: ' + playerWins + ' Computer: ' + computerWins; 
 
 });
@@ -87,8 +87,7 @@ rockButton.addEventListener('click', () => {
 const paperButton = document.querySelector('#paperButton');
 paperButton.addEventListener('click', () => {
 	let playerChoice = 'paper';
-	const winner = playRound(playerChoice);
-	results.textContent = winner;
+	playRound(playerChoice);
 	score.textContent = 'Current Score \nPlayer: ' + playerWins + ' Computer: ' + computerWins; 
 
 });
@@ -96,8 +95,7 @@ paperButton.addEventListener('click', () => {
 const scissorsButton = document.querySelector('#scissorsButton');
 scissorsButton.addEventListener('click', () => {
 	let playerChoice = 'scissors';
-	const winner = playRound(playerChoice);
-	results.textContent = winner;
+	playRound(playerChoice);
 	score.textContent = 'Current Score \nPlayer: ' + playerWins + ' Computer: ' + computerWins; 
 
 	
