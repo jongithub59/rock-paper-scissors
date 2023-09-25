@@ -49,25 +49,29 @@ function playRound(playerChoice) {
 		results.textContent = 'Computer chose Paper! You Win! Scissors beats Paper!';
 	} else 
 	results.textContent = 'Please enter either "Rock", "Paper", or" Scissors"';
-	
+	if (playerWins == 5) {
+		results.textContent = 'Congrats! You won ' + playerWins + ' to ' + computerWins;
+		alert('You won the game! Refresh to play again')
+		controller.abort();
+	} else if (computerWins == 5){
+		results.textContent = 'Unfortunate. You lost ' + playerWins + ' to ' + computerWins;
+		alert('You lost the game. Refresh to play again')
+		controller.abort();
+	}
 
 }
-//  Plays rock paper scissors for 5 rounds and displays the winner
-// function game() {
-	// while (playerWins < 5 && computerWins < 5) {
-// 		console.log(playRound()); 
-// 		console.log('Rounds won: ' + playerWins + ' Computer rounds won: ' + computerWins);
-// 	}
-// 	if (playerWins = 5) {
-// 		return('You won the game!')
-// 	} else {
-// 		return('You lost the game.')
-// 	}
-// }
+
+function removeButton() {
+    btns.forEach(div => {
+        div.removeEventListener('click', )
+    })
+}
 
 // main
 let playerWins = 0;
 let computerWins = 0;
+
+const btns = document.querySelectorAll('div.btn');
 
 const score = document.querySelector('#score');
 
@@ -75,6 +79,10 @@ score.textContent = 'Current Score \nPlayer: ' + playerWins + ' Computer: ' + co
 
 const results = document.querySelector('#results');
 
+results.textContent = 'First to 5 wins the game';
+
+const controller = new AbortController();
+const { signal } = controller;
 
 const rockButton = document.querySelector('#rockButton');
 rockButton.addEventListener('click', () => {
@@ -82,7 +90,7 @@ rockButton.addEventListener('click', () => {
 	playRound(playerChoice);
 	score.textContent = 'Current Score \nPlayer: ' + playerWins + ' Computer: ' + computerWins; 
 
-});
+},{ signal });
 
 const paperButton = document.querySelector('#paperButton');
 paperButton.addEventListener('click', () => {
@@ -90,7 +98,7 @@ paperButton.addEventListener('click', () => {
 	playRound(playerChoice);
 	score.textContent = 'Current Score \nPlayer: ' + playerWins + ' Computer: ' + computerWins; 
 
-});
+},{ signal });
 
 const scissorsButton = document.querySelector('#scissorsButton');
 scissorsButton.addEventListener('click', () => {
@@ -98,7 +106,7 @@ scissorsButton.addEventListener('click', () => {
 	playRound(playerChoice);
 	score.textContent = 'Current Score \nPlayer: ' + playerWins + ' Computer: ' + computerWins; 
 
-	
-});
+
+},{ signal });
 
 
