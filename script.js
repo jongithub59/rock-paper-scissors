@@ -24,48 +24,31 @@ function playRound(playerChoice) {
 	if (playerChoice == computerChoice) {
 		results.textContent = 'Tie!';
 
-	} else if(playerChoice == 'rock' && computerChoice == 'paper') {
+	} else if ((playerChoice == 'rock' && computerChoice == 'paper') ||
+		(playerChoice == 'paper' && computerChoice == 'scissors') ||
+		(playerChoice == 'scissors' && computerChoice == 'rock')) {
 		computerWins = computerWins + 1;
-		results.textContent = 'Computer chose Paper! You Lose! Paper beats Rock!';
+		results.textContent = 'Computer chose ' + computerChoice + 
+		'! You Lose! ' + computerChoice + ' beats '+ playerChoice+ '!';
 		
-	} else if (playerChoice == 'rock' && computerChoice == 'scissors') {
+	} else if ((playerChoice == 'rock' && computerChoice == 'scissors') ||
+		(playerChoice == 'paper' && computerChoice == 'rock') ||
+		(playerChoice == 'scissors' && computerChoice == 'paper')) {
 		playerWins = playerWins + 1;
 		results.textContent = 'Computer chose Scissors! You Win! Rock beats Scissors!';
 
-	} else if (playerChoice == 'paper' && computerChoice == 'rock') {
-		playerWins = playerWins + 1;
-		results.textContent = 'Computer chose Rock! You Win! Paper beats Rock!';
-
-	} else if (playerChoice == 'paper' && computerChoice == 'scissors') {
-		computerWins = computerWins + 1;
-		results.textContent = 'Computer chose Scissors! You Lose! Scissors beats Paper!';
-
-	} else if (playerChoice == 'scissors' && computerChoice == 'rock') {
-		computerWins = computerWins + 1;
-		results.textContent = 'Computer chose Rock! You Lose! Rock beats Scissors!';
-
-	} else if (playerChoice == 'scissors' && computerChoice == 'paper') {
-		playerWins = playerWins + 1;
-		results.textContent = 'Computer chose Paper! You Win! Scissors beats Paper!';
 	} else 
 	results.textContent = 'Please enter either "Rock", "Paper", or" Scissors"';
 	if (playerWins == 5) {
 		results.textContent = 'Congrats! You won ' + playerWins + ' to ' + computerWins;
-		alert('You won the game! Refresh to play again')
 		controller.abort();
 	} else if (computerWins == 5){
 		results.textContent = 'Unfortunate. You lost ' + playerWins + ' to ' + computerWins;
-		alert('You lost the game. Refresh to play again')
 		controller.abort();
 	}
 
 }
 
-function removeButton() {
-    btns.forEach(div => {
-        div.removeEventListener('click', )
-    })
-}
 
 // main
 let playerWins = 0;
