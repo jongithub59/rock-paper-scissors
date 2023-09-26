@@ -35,18 +35,25 @@ function playRound(playerChoice) {
 		(playerChoice == 'paper' && computerChoice == 'rock') ||
 		(playerChoice == 'scissors' && computerChoice == 'paper')) {
 		playerWins = playerWins + 1;
-		results.textContent = 'Computer chose Scissors! You Win! Rock beats Scissors!';
+		results.textContent = 'Computer chose ' + computerChoice + 
+		'! You Win! ' + playerChoice + ' beats '+ computerChoice+ '!';
 
 	} else 
 	results.textContent = 'Please enter either "Rock", "Paper", or" Scissors"';
 	if (playerWins == 5) {
 		results.textContent = 'Congrats! You won ' + playerWins + ' to ' + computerWins;
-		controller.abort();
+		removeButtons();
 	} else if (computerWins == 5){
 		results.textContent = 'Unfortunate. You lost ' + playerWins + ' to ' + computerWins;
-		controller.abort();
+		removeButtons();
 	}
 
+}
+
+function removeButtons() {
+	buttons.forEach(button => {
+		button.disabled = true;
+	})
 }
 
 
@@ -54,42 +61,23 @@ function playRound(playerChoice) {
 let playerWins = 0;
 let computerWins = 0;
 
-const btns = document.querySelectorAll('div.btn');
-
 const score = document.querySelector('#score');
+const results = document.querySelector('#results');
+const rockButton = document.querySelector('#rockButton');
+const paperButton = document.querySelector('#paperButton');
+const scissorsButton = document.querySelector('#scissorsButton');
+const buttons = document.querySelectorAll('button')
 
 score.textContent = 'Current Score \nPlayer: ' + playerWins + ' Computer: ' + computerWins; 
-
-const results = document.querySelector('#results');
-
 results.textContent = 'First to 5 wins the game';
 
-const controller = new AbortController();
-const { signal } = controller;
 
-const rockButton = document.querySelector('#rockButton');
-rockButton.addEventListener('click', () => {
-	let playerChoice = 'rock';
-	playRound(playerChoice);
-	score.textContent = 'Current Score \nPlayer: ' + playerWins + ' Computer: ' + computerWins; 
+buttons.forEach(button => {
+	button.addEventListener('click', function() {
+		playRound(button.id);
+		score.textContent = 'Current Score \nPlayer: ' + playerWins + ' Computer: ' + computerWins; 
+	})
+	});
 
-},{ signal });
-
-const paperButton = document.querySelector('#paperButton');
-paperButton.addEventListener('click', () => {
-	let playerChoice = 'paper';
-	playRound(playerChoice);
-	score.textContent = 'Current Score \nPlayer: ' + playerWins + ' Computer: ' + computerWins; 
-
-},{ signal });
-
-const scissorsButton = document.querySelector('#scissorsButton');
-scissorsButton.addEventListener('click', () => {
-	let playerChoice = 'scissors';
-	playRound(playerChoice);
-	score.textContent = 'Current Score \nPlayer: ' + playerWins + ' Computer: ' + computerWins; 
-
-
-},{ signal });
 
 
