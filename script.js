@@ -47,15 +47,13 @@ function playRound(playerChoice) {
 		results.textContent = 'Unfortunate. You lost ' + playerWins + ' to ' + computerWins;
 		removeButtons();
 	}
-
 }
 
 function removeButtons() {
-	buttons.forEach(button => {
-		button.disabled = true;
+	buttons.forEach(img => {
+		img.replaceWith(img.cloneNode(true));
 	})
 }
-
 
 // main
 let playerWins = 0;
@@ -66,15 +64,15 @@ const results = document.querySelector('#results');
 const rockButton = document.querySelector('#rockButton');
 const paperButton = document.querySelector('#paperButton');
 const scissorsButton = document.querySelector('#scissorsButton');
-const buttons = document.querySelectorAll('button')
+const buttons = document.querySelectorAll('.btn')
 
 score.textContent = 'Current Score \nPlayer: ' + playerWins + ' Computer: ' + computerWins; 
 results.textContent = 'First to 5 wins the game';
 
 
-buttons.forEach(button => {
-	button.addEventListener('click', function() {
-		playRound(button.id);
+buttons.forEach(img => {
+	img.addEventListener('click', function() {
+		playRound(img.id);
 		score.textContent = 'Current Score \nPlayer: ' + playerWins + ' Computer: ' + computerWins; 
 	})
 	});
