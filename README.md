@@ -1,1 +1,0 @@
-This is a rock paper scissors project that will demonstrate my ability to create javascript functions that can both take a user input and create a computer input. It will also utilize the skill of creating for loops and properly initializing andending them
