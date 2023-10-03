@@ -4,13 +4,13 @@ function getComputerChoice() { // randomly generates a numeber 1-3 and uses a sw
 	let computerChoice = Math.floor(Math.random() * 3) + 1;
 	switch(computerChoice) {
 		case 1:
-			computerChoice = "rock";
+			computerChoice = "Rock";
 			break;
 		case 2:
-			computerChoice = "paper";
+			computerChoice = "Paper";
 			break;
 		case 3:
-			computerChoice = "scissors";
+			computerChoice = "Scissors";
 			break;
 	}
 	return computerChoice;
@@ -24,22 +24,20 @@ function playRound(playerChoice) {
 	if (playerChoice == computerChoice) {
 		results.textContent = 'Tie!';
 
-	} else if ((playerChoice == 'rock' && computerChoice == 'paper') ||
-		(playerChoice == 'paper' && computerChoice == 'scissors') ||
-		(playerChoice == 'scissors' && computerChoice == 'rock')) {
+	} else if ((playerChoice == 'Rock' && computerChoice == 'Paper') ||
+		(playerChoice == 'Paper' && computerChoice == 'Scissors') ||
+		(playerChoice == 'Scissors' && computerChoice == 'Rock')) {
 		computerWins = computerWins + 1;
 		results.textContent = 'Computer chose ' + computerChoice + 
 		'! You Lose! ' + computerChoice + ' beats '+ playerChoice+ '!';
 		
-	} else if ((playerChoice == 'rock' && computerChoice == 'scissors') ||
-		(playerChoice == 'paper' && computerChoice == 'rock') ||
-		(playerChoice == 'scissors' && computerChoice == 'paper')) {
+	} else if ((playerChoice == 'Rock' && computerChoice == 'Scissors') ||
+		(playerChoice == 'Paper' && computerChoice == 'Rock') ||
+		(playerChoice == 'Scissors' && computerChoice == 'Paper')) {
 		playerWins = playerWins + 1;
 		results.textContent = 'Computer chose ' + computerChoice + 
 		'! You Win! ' + playerChoice + ' beats '+ computerChoice+ '!';
-
-	} else 
-	results.textContent = 'Please enter either "Rock", "Paper", or" Scissors"';
+		}
 	if (playerWins == 5) {
 		results.textContent = 'Congrats! You won ' + playerWins + ' to ' + computerWins;
 		removeButtons();
